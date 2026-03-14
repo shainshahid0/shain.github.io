@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shain Shahid Chowdhury — Senior Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1714;
+      --paper: #f5f1eb;
+      --warm: #c8a96e;
+      --warm-light: #e8d5b0;
+      --rust: #8b4513;
+      --muted: #7a7065;
+      --line: rgba(26,23,20,0.12);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --mono: 'DM Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999;
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .header-left {
+      padding: 80px 60px 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--line);
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-right {
+      padding: 80px 60px 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    /* Decorative circle */
+    .header-right::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      border: 1px solid var(--warm-light);
+      opacity: 0.6;
+      animation: spin 60s linear infinite;
+    }
+    .header-right::after {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 1px solid var(--warm);
+      opacity: 0.3;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-top: 24px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.35s;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--warm);
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 380px;
+      margin-top: 28px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.5s;
+    }
+
+    .header-meta {
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.65s;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+
+    .meta-row:hover { color: var(--ink); }
+
+    .meta-row .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--warm);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.8s;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); border-color: var(--warm); }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.7s;
+    }
+
+    .stat-cell {
+      background: var(--paper);
+      padding: 28px 24px;
+    }
+
+    .stat-num {
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat-num sup {
+      font-size: 1rem;
+      color: var(--warm);
+      vertical-align: super;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .bio-text {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.9s;
+    }
+
+    /* ── Section Shared ── */
+    section {
+      padding: 100px 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 64px;
+    }
+
+    .section-title em { font-style: italic; color: var(--warm); }
+
+    /* ── Experience ── */
+    #experience { background: var(--ink); color: var(--paper); }
+    #experience .section-label { color: var(--warm); }
+    #experience .section-title { color: var(--paper); }
+
+    .exp-grid { display: grid; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      padding: 48px 0;
+      border-top: 1px solid rgba(245,241,235,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .exp-item.visible { opacity: 1; transform: translateY(0); }
+
+    .exp-meta { }
+
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .exp-company {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(245,241,235,0.5);
+    }
+
+    .exp-role {
+      font-size: 1.35rem;
+      font-weight: 300;
+      color: var(--paper);
+      margin-bottom: 6px;
+    }
+
+    .exp-location {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(245,241,235,0.4);
+      margin-bottom: 20px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exp-bullets li {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(245,241,235,0.7);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--warm);
+      font-size: 0.8rem;
+    }
+
+    /* ── Skills ── */
+    #skills { }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .skills-intro {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      position: sticky;
+      top: 40px;
+    }
+
+    .skills-categories { display: flex; flex-direction: column; gap: 40px; }
+
+    .skill-category-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 14px;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 7px 16px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: transparent;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: default;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .pill:hover { background: var(--warm-light); border-color: var(--warm); }
+
+    /* ── Publications ── */
+    #publications { background: var(--warm-light); }
+
+    .pub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .pub-card {
+      background: var(--paper);
+      padding: 40px 36px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .pub-card.visible { opacity: 1; transform: translateY(0); }
+
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 14px;
+    }
+
+    .pub-title {
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.4;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .pub-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rust);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .pub-link:hover { opacity: 0.6; }
+
+    /* ── Education ── */
+    #education {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+    }
+
+    .edu-block {
+      padding: 100px 72px;
+      border-right: 1px solid var(--line);
+    }
+
+    .edu-block:last-child { border-right: none; }
+
+    .edu-degree {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 16px 0 6px;
+    }
+
+    .edu-school {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .edu-gpa {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--warm);
+    }
+
+    .edu-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── Hobbies ── */
+    #hobbies {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 80px 72px;
+    }
+
+    #hobbies .section-title { margin-bottom: 40px; }
+
+    .hobby-row {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .hobby-item {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245,241,235,0.6);
+      transition: color 0.3s;
+    }
+
+    .hobby-item:hover { color: var(--warm); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 40px 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--warm); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper); }
+    ::-webkit-scrollbar-thumb { background: var(--warm-light); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; min-height: auto; }
+      .header-left { border-right: none; border-bottom: 1px solid var(--line); padding: 56px 32px; }
+      .header-right { padding: 56px 32px; }
+      section { padding: 72px 32px; }
+      .exp-item { grid-template-columns: 1fr; gap: 16px; }
+      .skills-layout { grid-template-columns: 1fr; gap: 48px; }
+      .pub-grid { grid-template-columns: 1fr; }
+      #education { grid-template-columns: 1fr; }
+      .edu-block { padding: 64px 32px; border-right: none; border-bottom: 1px solid var(--line); }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+<header>
+  <div class="header-left">
+    <div>
+      <p class="eyebrow">Portfolio — Senior Software Engineer</p>
+      <h1>Shain<br><em>Shahid</em><br>Chowdhury</h1>
+      <p class="tagline">Technically astute engineer crafting software that precisely meets diverse requirements — from microservices to machine learning.</p>
+    </div>
+    <div class="header-meta">
+      <a class="meta-row" href="mailto:shainshahidchowdhury@gmail.com">
+        <span class="dot"></span> shainshahidchowdhury@gmail.com
+      </a>
+      <a class="meta-row" href="tel:+14352946205">
+        <span class="dot"></span> +1 (435) 294-6205
+      </a>
+      <a class="meta-row" href="#">
+        <span class="dot"></span> Leander, Texas 78641
+      </a>
+      <a class="meta-row" href="https://linkedin.com" target="_blank">
+        <span class="dot"></span> LinkedIn Profile
+      </a>
+      <a class="meta-row" href="https://scholar.google.com" target="_blank">
+        <span class="dot"></span> Google Scholar
+      </a>
+      <div style="height:28px;"></div>
+      <nav class="nav-links">
+        <a href="#experience">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Research</a>
+        <a href="#education">Education</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-num">10<sup>+</sup></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Companies</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">3.90</div>
+        <div class="stat-label">MS GPA</div>
+      </div>
+    </div>
+    <p class="bio-text">
+      A versatile engineer with deep expertise in Java, Spring Boot, and distributed systems — equally at home leading a Scrum team, designing APIs for mission-critical infrastructure, or training neural networks for research.
+    </p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+<section id="experience">
+  <p class="section-label">01 — Professional Journey</p>
+  <h2 class="section-title">Where I've<br><em>Built Things</em></h2>
+
+  <div class="exp-grid">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-period">Jan 2023 — Present</p>
+        <p class="exp-company">Squaretrade Inc</p>
+      </div>
+      <div>
+        <p class="exp-role">Senior Software Engineer &amp; Scrum Master</p>
+        <p class="exp-location">Brisbane, CA (Remote)</p>
+        <ul class="exp-bullets">
+          <li>Acted as Scrum Master, managing all Scrum events and enforcing principles team-wide.</li>
+          <li>Designed and developed APIs enabling microservice communication using TDD and SPOCK.</li>
+          <li>Troubleshot production issues with Dynatrace and Splunk; refactored legacy code for extensibility.</li>
+          <li>Reviewed peers' code and mentored the team toward cleaner, quality-first practices.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-period">May 2022 — Aug 2022</p>
+        <p class="exp-company">Datamaster</p>
+      </div>
+      <div>
+        <p class="exp-role">Software Developer Intern</p>
+        <p class="exp-location">Layton, UT</p>
+        <ul class="exp-bullets">
+          <li>Handled initial ingestion and continuous updates of MLS data via external APIs.</li>
+          <li>Built 10 data ingestion services using Docker, Amazon S3, Amazon Batch, C#, and MongoDB.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-period">Apr 2019 — Dec 2020</p>
+        <p class="exp-company">Dovetail Technologies</p>
+      </div>
+      <div>
+        <p class="exp-role">Senior Software Engineer — Tech Lead</p>
+        <p class="exp-location">Dhaka, Bangladesh</p>
+        <ul class="exp-bullets">
+          <li>Led a team of seven building the mission-critical VOLMET system for Changi Airport, Singapore.</li>
+          <li>Designed and developed an ML engine to predict voice transmission length from historical data.</li>
+          <li>Bridged project managers, QA, developers, and customers to resolve complex technical issues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-period">Dec 2017 — Mar 2019</p>
+        <p class="exp-company">Wipro Bangladesh</p>
+      </div>
+      <div>
+        <p class="exp-role">Senior Java Developer</p>
+        <p class="exp-location">Dhaka, Bangladesh</p>
+        <ul class="exp-bullets">
+          <li>Designed and developed bill pay and telco service backends serving millions of Bangladeshi users daily.</li>
+          <li>Integrated over 20 third-party services into the existing codebase.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-period">Aug 2016 — Nov 2017</p>
+        <p class="exp-company">Ipvision Canada Inc</p>
+      </div>
+      <div>
+        <p class="exp-role">Senior Software Engineer</p>
+        <p class="exp-location">Dhaka, Bangladesh</p>
+        <ul class="exp-bullets">
+          <li>Developed a cloud SDK for chunked and raw-stream upload/download of images, video, and audio.</li>
+          <li>Implemented application cache in C++ for image caching and disk persistence of large files.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-period">May 2014 — Jul 2016</p>
+        <p class="exp-company">Kona Software</p>
+      </div>
+      <div>
+        <p class="exp-role">Software Engineer</p>
+        <p class="exp-location">Dhaka, Bangladesh</p>
+        <ul class="exp-bullets">
+          <li>Built a Mobile Banking Server with Spring REST and SOAP services.</li>
+          <li>Developed HCE (Host Card Emulation) platform acting as a gateway to financial card provisioning systems.</li>
+          <li>Collaborated with dev and QA teams to deliver scalable, performant client solutions.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SKILLS ═══════════════════════════════ -->
+<section id="skills">
+  <p class="section-label">02 — Technical Expertise</p>
+  <h2 class="section-title">Skills &amp;<br><em>Technologies</em></h2>
+
+  <div class="skills-layout">
+    <div class="skills-intro">
+      A broad toolkit built over a decade of hands-on engineering — spanning backend systems, cloud infrastructure, data engineering, and applied machine learning.
+      <br><br>
+      Certified Scrum Master with a track record of delivering maintainable, high-quality software at scale.
+    </div>
+
+    <div class="skills-categories">
+
+      <div>
+        <p class="skill-category-label">Languages</p>
+        <div class="skill-pills">
+          <span class="pill" style="animation-delay:0.1s">Java</span>
+          <span class="pill" style="animation-delay:0.15s">C#</span>
+          <span class="pill" style="animation-delay:0.2s">C++</span>
+          <span class="pill" style="animation-delay:0.25s">Python</span>
+          <span class="pill" style="animation-delay:0.3s">Groovy</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-category-label">Frameworks &amp; Platforms</p>
+        <div class="skill-pills">
+          <span class="pill" style="animation-delay:0.1s">Spring</span>
+          <span class="pill" style="animation-delay:0.15s">Spring Boot</span>
+          <span class="pill" style="animation-delay:0.2s">.NET</span>
+          <span class="pill" style="animation-delay:0.25s">Angular</span>
+          <span class="pill" style="animation-delay:0.3s">PyTorch</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-category-label">Architecture &amp; Infrastructure</p>
+        <div class="skill-pills">
+          <span class="pill" style="animation-delay:0.1s">Microservices</span>
+          <span class="pill" style="animation-delay:0.15s">Kafka</span>
+          <span class="pill" style="animation-delay:0.2s">Event-Driven Systems</span>
+          <span class="pill" style="animation-delay:0.25s">Docker</span>
+          <span class="pill" style="animation-delay:0.3s">Amazon S3</span>
+          <span class="pill" style="animation-delay:0.35s">Amazon Batch</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-category-label">Databases</p>
+        <div class="skill-pills">
+          <span class="pill" style="animation-delay:0.1s">MySQL</span>
+          <span class="pill" style="animation-delay:0.15s">PostgreSQL</span>
+          <span class="pill" style="animation-delay:0.2s">Oracle</span>
+          <span class="pill" style="animation-delay:0.25s">MongoDB</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-category-label">DevOps &amp; Observability</p>
+        <div class="skill-pills">
+          <span class="pill" style="animation-delay:0.1s">Git</span>
+          <span class="pill" style="animation-delay:0.15s">Jenkins</span>
+          <span class="pill" style="animation-delay:0.2s">Gradle</span>
+          <span class="pill" style="animation-delay:0.25s">Dynatrace</span>
+          <span class="pill" style="animation-delay:0.3s">Splunk</span>
+          <span class="pill" style="animation-delay:0.35s">JUnit / SPOCK</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-category-label">Methodology</p>
+        <div class="skill-pills">
+          <span class="pill" style="animation-delay:0.1s">Scrum</span>
+          <span class="pill" style="animation-delay:0.15s">TDD</span>
+          <span class="pill" style="animation-delay:0.2s">Certified Scrum Master</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PUBLICATIONS ═══════════════════════════════ -->
+<section id="publications">
+  <p class="section-label">03 — Research</p>
+  <h2 class="section-title">Academic<br><em>Publications</em></h2>
+
+  <div class="pub-grid">
+
+    <div class="pub-card">
+      <p class="pub-venue">ICMLA — 2021</p>
+      <p class="pub-title">"Time Series Data Augmentation using Time Warped Auto-Encoders"</p>
+      <a href="https://scholar.google.com" target="_blank" class="pub-link">View on Scholar →</a>
+    </div>
+
+    <div class="pub-card">
+      <p class="pub-venue">WPTCE — 2023</p>
+      <p class="pub-title">"Generative Neural Network Approach to Designing Dynamic Inductive Power Transfer Systems"</p>
+      <a href="https://scholar.google.com" target="_blank" class="pub-link">View on Scholar →</a>
+    </div>
+
+  </div>
+
+  <div style="margin-top:48px; padding:40px 36px; border:1px solid var(--line); background: var(--paper);">
+    <p class="section-label" style="margin-bottom:10px;">Master's Thesis</p>
+    <p style="font-size:1.15rem; font-style:italic; font-weight:400; max-width:600px; line-height:1.5;">
+      "A Generative Neural Network for Discovering Near-Optimal Dynamic Inductive Power Transfer Systems"
+    </p>
+    <div style="margin-top:18px;">
+      <a href="#" class="pub-link">Read Thesis →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ EDUCATION ═══════════════════════════════ -->
+<section id="education" style="padding:0; border-bottom: 1px solid var(--line);">
+
+  <div class="edu-block">
+    <p class="section-label">04 — Education</p>
+    <div class="section-label" style="margin-top:40px; color: var(--muted);">Graduate</div>
+    <p class="edu-degree">MS in Computer Science</p>
+    <p class="edu-school">Utah State University</p>
+    <p class="edu-gpa">CGPA: 3.90 / 4.00</p>
+    <p class="edu-period">Jan 2021 — Dec 2022 · Logan, UT</p>
+  </div>
+
+  <div class="edu-block">
+    <p class="section-label" style="opacity:0; pointer-events:none;">04</p>
+    <div class="section-label" style="margin-top:40px; color: var(--muted);">Undergraduate</div>
+    <p class="edu-degree">BSc in Computer Science &amp; Engineering</p>
+    <p class="edu-school">University of Dhaka</p>
+    <p class="edu-gpa">CGPA: 3.25 / 4.00</p>
+    <p class="edu-period">Jan 2010 — Jan 2014 · Dhaka, Bangladesh</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════ HOBBIES ═══════════════════════════════ -->
+<section id="hobbies">
+  <p class="section-label" style="color: var(--warm);">05 — Beyond the Code</p>
+  <h2 class="section-title" style="color: var(--paper);">When I'm<br><em>Not Coding</em></h2>
+  <div class="hobby-row">
+    <span class="hobby-item">Novels</span>
+    <span class="hobby-item">Traveling</span>
+    <span class="hobby-item">Camping</span>
+    <span class="hobby-item">Chess</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <p class="footer-name">Shain Shahid Chowdhury · 2025</p>
+  <div class="footer-links">
+    <a href="mailto:shainshahidchowdhury@gmail.com">Email</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="https://scholar.google.com" target="_blank">Scholar</a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.exp-item, .pub-card').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
