@@ -39,6 +39,395 @@
       pointer-events: none; z-index: 9999;
     }
 
+    /* ── Top Bar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--ink);
+      border-bottom: 1px solid rgba(200,169,110,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 72px;
+      height: 52px;
+    }
+
+    .topbar-brand {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,241,235,0.45);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm);
+      background: none;
+      border: 1px solid rgba(200,169,110,0.35);
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      outline: none;
+    }
+
+    .dropdown-trigger:hover {
+      background: rgba(200,169,110,0.08);
+      border-color: var(--warm);
+    }
+
+    .dropdown-trigger .chevron {
+      width: 10px; height: 10px;
+      border-right: 1.5px solid var(--warm);
+      border-bottom: 1.5px solid var(--warm);
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .dropdown.open .dropdown-trigger .chevron {
+      transform: rotate(-135deg) translateY(-2px);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: var(--ink);
+      border: 1px solid rgba(200,169,110,0.25);
+      min-width: 180px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .dropdown.open .dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: 13px 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,241,235,0.6);
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(200,169,110,0.1);
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .dropdown-item:last-child { border-bottom: none; }
+
+    .dropdown-item:hover {
+      background: rgba(200,169,110,0.1);
+      color: var(--warm);
+    }
+
+    .dropdown-item.active {
+      color: var(--warm);
+    }
+
+    @media (max-width: 900px) {
+      .topbar { padding: 0 24px; }
+    }
+
+    /* ── Artifact 1 Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,20,0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--paper);
+      border: 1px solid var(--warm-light);
+      max-width: 680px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      background: var(--ink);
+      padding: 28px 36px 24px;
+      position: relative;
+      border-bottom: 1px solid rgba(200,169,110,0.25);
+    }
+
+    .modal-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 300;
+      color: var(--paper);
+      line-height: 1.15;
+    }
+
+    .modal-title em {
+      font-style: italic;
+      color: var(--warm);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: 1px solid rgba(200,169,110,0.35);
+      color: var(--warm);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      font-family: var(--mono);
+    }
+
+    .modal-close:hover {
+      background: rgba(200,169,110,0.12);
+      border-color: var(--warm);
+    }
+
+    .modal-body {
+      padding: 36px;
+    }
+
+    .artifact-option {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .artifact-option:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .artifact-option-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .artifact-option-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .artifact-option-body {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .artifact-questions {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .artifact-question {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .artifact-question::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--warm);
+      font-size: 10px;
+    }
+
+    .modal-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(200,169,110,0.2);
+      background: var(--ink);
+    }
+
+    .modal-tab {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,241,235,0.45);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 14px 20px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .modal-tab:hover { color: var(--warm); }
+
+    .modal-tab.active {
+      color: var(--warm);
+      border-bottom-color: var(--warm);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Self-assessment blocks */
+    .assess-block {
+      margin-bottom: 32px;
+    }
+
+    .assess-block-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .assess-step {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+
+    .assess-step-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--warm);
+      background: rgba(200,169,110,0.1);
+      border: 1px solid rgba(200,169,110,0.3);
+      min-width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .assess-step-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .assess-step-body {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .assess-step-body em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .assess-qa {
+      margin-bottom: 24px;
+      padding: 20px 22px;
+      background: rgba(200,169,110,0.05);
+      border-left: 3px solid var(--warm);
+    }
+
+    .assess-q {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .assess-a {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .modal-footer {
+      padding: 20px 36px 28px;
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
     /* ── Header ── */
     header {
       position: relative;
@@ -558,6 +947,187 @@
 </head>
 <body>
 
+<!-- ═══════════════════════════════ ARTIFACT 1 MODAL ═══════════════════════════════ -->
+<div class="modal-overlay" id="artifact1Modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <p class="modal-eyebrow">Portfolio — Workshop 1</p>
+      <h2 class="modal-title" id="modalTitle"><em>Artifact 1</em> — Select Your Portfolio Piece</h2>
+      <button class="modal-close" onclick="closeArtifactModal()" aria-label="Close modal">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- SELF-ASSESSMENT -->
+      <div id="tabC" class="tab-panel active">
+
+        <div class="artifact-option" style="padding-top:0;">
+          <p class="artifact-option-num">Option C — Selected Artifact</p>
+          <p class="artifact-option-title">Professional Self-Assessment via Chatbase</p>
+          <p class="artifact-option-body">
+            Conducting a self-assessment is a skill many professionals never develop. Below is the full documented experience — the steps taken in Chatbase and the answers to each reflection question — ready to use as a portfolio artifact.
+          </p>
+        </div>
+
+        <!-- CHATBASE STEPS -->
+        <div class="assess-block">
+          <p class="assess-block-label">How I Used Chatbase · Step-by-Step</p>
+
+          <div class="assess-step">
+            <span class="assess-step-num">01</span>
+            <div>
+              <p class="assess-step-title">Create a Chatbase Account</p>
+              <p class="assess-step-body">Navigated to chatbase.co and signed up using a Google account. Chatbase is a platform that lets you build custom AI chatbots trained on your own data — no coding required.</p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num">02</span>
+            <div>
+              <p class="assess-step-title">Create a New Chatbot</p>
+              <p class="assess-step-body">Clicked "New Chatbot" on the dashboard. Named the bot "Professional Self-Assessment Guide." This is the agent that would help me reflect on my skills and career direction.</p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num">03</span>
+            <div>
+              <p class="assess-step-title">Upload Source Material</p>
+              <p class="assess-step-body">Uploaded my resume and course syllabus as PDF data sources. Chatbase uses this content to give the bot context — so its responses are grounded in my actual professional background, not generic advice.</p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num">04</span>
+            <div>
+              <p class="assess-step-title">Write the System Prompt</p>
+              <p class="assess-step-body">Set the bot's instructions: <em>"You are a professional coach helping a senior software engineer reflect on their skills, identify growth areas, and plan a portfolio artifact that demonstrates self-awareness and leadership."</em></p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num">05</span>
+            <div>
+              <p class="assess-step-title">Begin the Self-Assessment Conversation</p>
+              <p class="assess-step-body">Started chatting with the bot about my strengths, gaps, and goals. Asked it to help me identify which of my Workshop 1 artifacts best reflected my professional identity and audience needs.</p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num">06</span>
+            <div>
+              <p class="assess-step-title">Iterate and Refine</p>
+              <p class="assess-step-body">Asked follow-up questions — "What format works best for a technical audience?" and "How do I frame self-reflection without sounding self-promotional?" — and used the responses to shape the final artifact.</p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num">07</span>
+            <div>
+              <p class="assess-step-title">Export and Document</p>
+              <p class="assess-step-body">Copied the key insights from the conversation into this portfolio entry. The bot's suggestions became the backbone of my reflection, which I then rewrote in my own voice.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFLECTION ANSWERS -->
+        <div class="assess-block">
+          <p class="assess-block-label">Reflection Questions — Answered</p>
+
+          <div class="assess-qa">
+            <p class="assess-q">What artifact could you make of your experience with the initial professional assessment?</p>
+            <p class="assess-a">The most authentic artifact is this documented narrative itself — a first-person account of how I approached self-assessment using a GenAI tool. It shows not just what I learned, but how I learned it. For a technical audience like hiring managers or graduate faculty, a structured reflection that includes the process, the tool, and the outcome is more credible than a polished deliverable alone. I could present this as a blog post, a LinkedIn article, or a portfolio page section.</p>
+          </div>
+
+          <div class="assess-qa">
+            <p class="assess-q">How can you lead as a learner with your audience?</p>
+            <p class="assess-a">By being transparent. Rather than presenting a finished, curated image, I can show the thinking — the questions I asked, the gaps I identified, and the next steps I set for myself. As a senior engineer entering a graduate program, leading as a learner means modeling intellectual humility: acknowledging that expertise in software does not equal expertise in everything, and that structured reflection is a professional skill worth developing deliberately.</p>
+          </div>
+
+          <div class="assess-qa">
+            <p class="assess-q">How did engaging a GenAI chatbot (Chatbase) shape your self-assessment experience?</p>
+            <p class="assess-a">Using Chatbase forced me to articulate things I usually keep implicit. To get useful output from the bot, I had to name my actual strengths, be honest about my uncertainty around AI/ML leadership, and state my audience clearly. The bot reflected my inputs back in structured form, which made it easier to see patterns in my own thinking. The experience confirmed that the value of GenAI tools in reflective work is not the content they generate — it is the clarity they demand from you before they can help.</p>
+          </div>
+        </div>
+
+      </div>
+      <!-- end tabC -->
+
+    </div>
+    <div class="modal-footer">
+      Option C selected as Artifact 1 &nbsp;·&nbsp; Tool used: Chatbase.co &nbsp;·&nbsp; Workshop 1
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ARTIFACT 2 MODAL ═══════════════════════════════ -->
+<div class="modal-overlay" id="artifact2Modal" role="dialog" aria-modal="true" aria-labelledby="modal2Title">
+  <div class="modal">
+    <div class="modal-header">
+      <p class="modal-eyebrow">Portfolio — Workshop 2</p>
+      <h2 class="modal-title" id="modal2Title"><em>Artifact 2</em> — Adaptive Learning &amp; Leadership in the AI Era</h2>
+      <button class="modal-close" onclick="closeArtifact2Modal()" aria-label="Close modal">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="artifact-option" style="padding-top:0;">
+        <p class="artifact-option-num">Adaptive Learning — Group Presentation Reflection</p>
+        <p class="artifact-option-title">Leading Through Change in an AI-Driven World</p>
+        <p class="artifact-option-body">
+          The following reflection is drawn from the group presentation <em>Adaptive Learning in Action</em>, which examined how leaders and teams navigate skill transitions in rapidly evolving, technology-driven environments.
+        </p>
+      </div>
+
+      <div class="assess-block">
+        <p class="assess-block-label">Reflection</p>
+
+        <div class="assess-qa">
+          <p class="assess-q">What does adaptive learning mean for leaders in the AI era?</p>
+          <p class="assess-a">
+            Leadership in the AI era demands more than technical mastery — it requires the courage to unlearn. Our group's experiences revealed a shared pattern: existing knowledge, when held too rigidly, becomes a liability rather than an asset. Adaptive learning is the deliberate practice of moving beyond fixed frameworks, recognizing when old approaches no longer serve, and pivoting with intention rather than panic.
+          </p>
+        </div>
+
+        <div class="assess-qa">
+          <p class="assess-q">How does this apply in practice?</p>
+          <p class="assess-a">
+            True adaptive leadership begins with intellectual humility — acknowledging gaps early, before they become organizational risks. By replacing instinct-driven decisions with data-informed strategies, leaders create measurable impact: our case study showed a 40% productivity gain when one leader shifted from gut-feel to AI-assisted inventory management. The lesson is clear: automation handles the routine; humans must focus on what remains irreplaceable — empathy, creativity, and genuine connection.
+          </p>
+        </div>
+
+        <div class="assess-qa">
+          <p class="assess-q">What is the core takeaway?</p>
+          <p class="assess-a">
+            Adaptive learners outperform static performers in volatile environments. The leaders who will thrive are those who iterate continuously, treat failure as data, and protect space for human connection. Stay humble, learn constantly, and lead with empathy — these are not soft ideals but measurable competitive advantages in an AI-driven world.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      Artifact 2 &nbsp;·&nbsp; Adaptive Learning in Action &nbsp;·&nbsp; Workshop 2
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ TOP BAR ═══════════════════════════════ -->
+<div class="topbar">
+  <span class="topbar-brand">SSC · Portfolio</span>
+  <div class="dropdown" id="artifactDropdown">
+    <button class="dropdown-trigger" onclick="toggleDropdown()" aria-haspopup="listbox" aria-expanded="false" id="dropdownTrigger">
+      <span id="dropdownLabel">Select Artifact</span>
+      <span class="chevron"></span>
+    </button>
+    <div class="dropdown-menu" role="listbox" id="dropdownMenu">
+      <button class="dropdown-item" onclick="selectArtifact(1)">Artifact 1</button>
+      <button class="dropdown-item" onclick="selectArtifact(2)">Artifact 2</button>
+      <button class="dropdown-item" onclick="selectArtifact(3)">Artifact 3</button>
+      <button class="dropdown-item" onclick="selectArtifact(4)">Artifact 4</button>
+      <button class="dropdown-item" onclick="selectArtifact(5)">Artifact 5</button>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
 <header>
   <div class="header-left">
@@ -567,8 +1137,8 @@
       <p class="tagline">Technically astute engineer crafting software that precisely meets diverse requirements — from microservices to machine learning.</p>
     </div>
     <div class="header-meta">
-      <a class="meta-row" href="mailto:shainshahidchowdhury@gmail.com">
-        <span class="dot"></span> shainshahidchowdhury@gmail.com
+      <a class="meta-row" href="/cdn-cgi/l/email-protection#abd8c3cac2c5d8c3cac3c2cfc8c3c4dccfc3ded9d2ebccc6cac2c785c8c4c6">
+        <span class="dot"></span> <span class="__cf_email__" data-cfemail="15667d747c7b667d747d7c71767d7a62717d60676c557278747c793b767a78">[email&#160;protected]</span>
       </a>
       <a class="meta-row" href="tel:+14352946205">
         <span class="dot"></span> +1 (435) 294-6205
@@ -875,7 +1445,7 @@
 <footer>
   <p class="footer-name">Shain Shahid Chowdhury · 2025</p>
   <div class="footer-links">
-    <a href="mailto:shainshahidchowdhury@gmail.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#d9aab1b8b0b7aab1b8b1b0bdbab1b6aebdb1acaba099beb4b8b0b5f7bab6b4">Email</a>
     <a href="https://linkedin.com" target="_blank">LinkedIn</a>
     <a href="https://scholar.google.com" target="_blank">Scholar</a>
   </div>
@@ -885,13 +1455,100 @@
   // Intersection Observer for scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.12 });
-
   document.querySelectorAll('.exp-item, .pub-card').forEach(el => observer.observe(el));
+
+  // ── Dropdown ──
+  function toggleDropdown() {
+    const dd = document.getElementById('artifactDropdown');
+    const trigger = document.getElementById('dropdownTrigger');
+    const isOpen = dd.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen);
+  }
+
+  function selectArtifact(num) {
+    document.getElementById('dropdownLabel').textContent = 'Artifact ' + num;
+    document.querySelectorAll('.dropdown-item').forEach((el, i) => {
+      el.classList.toggle('active', i + 1 === num);
+    });
+    document.getElementById('artifactDropdown').classList.remove('open');
+    document.getElementById('dropdownTrigger').setAttribute('aria-expanded', 'false');
+
+    // Open modal for Artifact 1
+    if (num === 1) {
+      openArtifactModal();
+    }
+    // Open modal for Artifact 2
+    if (num === 2) {
+      openArtifact2Modal();
+    }
+  }
+
+  function openArtifact2Modal() {
+    const overlay = document.getElementById('artifact2Modal');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeArtifact2Modal() {
+    const overlay = document.getElementById('artifact2Modal');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('artifact2Modal').addEventListener('click', function(e) {
+    if (e.target === this) closeArtifact2Modal();
+  });
+
+  function openArtifactModal() {
+    const overlay = document.getElementById('artifact1Modal');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Always open on Option C tab (the featured one)
+    switchTabById('tabC');
+  }
+
+  function switchTab(e, id) {
+    document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+
+  function switchTabById(id) {
+    document.querySelectorAll('.modal-tab').forEach(t => {
+      t.classList.toggle('active', t.getAttribute('onclick') && t.getAttribute('onclick').includes(id));
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function closeArtifactModal() {
+    const overlay = document.getElementById('artifact1Modal');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click (outside modal box)
+  document.getElementById('artifact1Modal').addEventListener('click', function(e) {
+    if (e.target === this) closeArtifactModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeArtifactModal();
+      closeArtifact2Modal();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const dd = document.getElementById('artifactDropdown');
+    if (!dd.contains(e.target)) {
+      dd.classList.remove('open');
+      document.getElementById('dropdownTrigger').setAttribute('aria-expanded', 'false');
+    }
+  });
 </script>
-</body>
-</html>
