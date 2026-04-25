@@ -428,6 +428,152 @@
       letter-spacing: 0.08em;
     }
 
+    /* ── Peer Comment Cards ── */
+    .peer-comment {
+      border: 1px solid var(--line);
+      margin-bottom: 24px;
+      background: #faf7f2;
+      overflow: hidden;
+    }
+
+    .peer-comment-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--ink);
+      border-bottom: 1px solid rgba(200,169,110,0.2);
+    }
+
+    .peer-avatar {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--warm);
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+
+    .peer-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 2px;
+    }
+
+    .peer-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(245,241,235,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    .peer-comment-body {
+      padding: 20px 22px;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .peer-comment-body em {
+      font-style: italic;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .peer-reply-block {
+      padding: 16px 22px 20px;
+      background: rgba(200,169,110,0.06);
+    }
+
+    .peer-reply-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 10px;
+    }
+
+    .peer-reply-text {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.72;
+    }
+
+    /* ── Framework Section Cards (Artifact 5) ── */
+    .framework-section {
+      border-left: 3px solid var(--warm);
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      background: rgba(200,169,110,0.04);
+    }
+
+    .framework-section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .framework-section-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .framework-section-body {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .framework-section-body em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .objective-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid rgba(200,169,110,0.5);
+      color: var(--warm);
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .value-pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      background: var(--ink);
+      color: var(--warm);
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
     /* ── Header ── */
     header {
       position: relative;
@@ -1078,19 +1224,65 @@
         <p class="assess-block-label">Reflection &mdash; 200 Words</p>
         <div class="assess-qa">
           <p class="assess-q">What does adaptive learning mean for leaders in the AI era?</p>
-          <p class="assess-a">Leadership in the AI era demands more than technical mastery &mdash; it requires the courage to unlearn. Our group&#39;s experiences revealed a shared pattern: existing knowledge, when held too rigidly, becomes a liability rather than an asset. Adaptive learning is the deliberate practice of moving beyond fixed frameworks, recognizing when old approaches no longer serve, and pivoting with intention rather than panic.</p>
+          <p class="assess-a">Leadership in the AI era demands more than technical mastery &mdash; it requires the courage to unlearn. Our group&#39;s experiences revealed a shared pattern: existing knowledge, when held too rigidly, becomes a liability rather than an asset. Adaptive learning is the deliberate practice of moving beyond fixed frameworks, recognizing when old approaches no longer serve, and pivoting with intention rather than panic. We treat organizational culture as a <em>dynamic dataset</em> &mdash; one that must be continuously re-read, adjusted, and aligned as AI initiatives evolve alongside the humans who execute them.</p>
         </div>
         <div class="assess-qa">
           <p class="assess-q">How does this apply in practice?</p>
-          <p class="assess-a">True adaptive leadership begins with intellectual humility &mdash; acknowledging gaps early, before they become organizational risks. By replacing instinct-driven decisions with data-informed strategies, leaders create measurable impact: our case study showed a 40% productivity gain when one leader shifted from gut-feel to AI-assisted inventory management. The lesson is clear: automation handles the routine; humans must focus on what remains irreplaceable &mdash; empathy, creativity, and genuine connection.</p>
+          <p class="assess-a">True adaptive leadership begins with intellectual humility &mdash; acknowledging gaps early, before they become organizational risks. By replacing instinct-driven decisions with data-informed strategies, leaders create measurable impact: our case study showed a 40% productivity gain when one leader shifted from gut-feel to AI-assisted inventory management. The lesson is clear: automation handles the routine; humans must focus on what remains irreplaceable &mdash; empathy, creativity, and genuine connection. Leaders must also manage expectations between <em>perfect</em> and <em>performant</em> systems &mdash; iterative deployment with controlled risk consistently delivers more value than waiting for unrealistic accuracy thresholds.</p>
         </div>
         <div class="assess-qa">
           <p class="assess-q">What is the core takeaway?</p>
-          <p class="assess-a">Adaptive learners outperform static performers in volatile environments. The leaders who will thrive are those who iterate continuously, treat failure as data, and protect space for human connection. Stay humble, learn constantly, and lead with empathy &mdash; these are not soft ideals but measurable competitive advantages in an AI-driven world.</p>
+          <p class="assess-a">Adaptive learners outperform static performers in volatile environments. The leaders who will thrive are those who iterate continuously, treat failure as data, and protect space for human connection. Persistence through iteration means framing failed pilots as valuable data points rather than setbacks &mdash; a mindset that reduces team resistance and sustains engagement through uncertainty. Stay humble, learn constantly, and lead with empathy &mdash; these are not soft ideals but measurable competitive advantages in an AI-driven world.</p>
         </div>
       </div>
+
+      <!-- ══ PEER FEEDBACK ══ -->
+      <div class="assess-block">
+        <p class="assess-block-label">Peer Feedback Received &mdash; Discussion Post Responses</p>
+
+        <!-- Comment 1 -->
+        <div class="peer-comment">
+          <div class="peer-comment-header">
+            <span class="peer-avatar">P1</span>
+            <div>
+              <p class="peer-name">Peer Respondent 1</p>
+              <p class="peer-date">Workshop 2 &mdash; Discussion Forum</p>
+            </div>
+          </div>
+          <div class="peer-comment-body">
+            <p>Your post presents a sophisticated and well-structured view of AI/ML leadership, especially in how you connect algorithmic iteration with organizational transformation. I really liked your idea of treating organizational culture as a <em>"dynamic dataset."</em> That analogy effectively captures the need for continuous adjustment, learning, and alignment as AI initiatives evolve. It also reinforces that transformation is not static but requires ongoing attention to both technical and human factors.</p>
+            <p style="margin-top:12px;">Your discussion on persistence through iteration is also very strong. Framing failed pilots as valuable data points rather than setbacks reflects a mature leadership mindset. In practice, this approach can significantly reduce resistance and encourage teams to stay engaged during uncertainty.</p>
+            <p style="margin-top:12px;">Additionally, your emphasis on ethical governance and stakeholder expectation management adds depth to your argument. Overall, your response demonstrates that successful AI/ML leadership depends on integrating technical rigor with adaptive, human-centered strategies that support sustainable and scalable change.</p>
+          </div>
+          <div class="peer-reply-block">
+            <p class="peer-reply-label">My Reflection on This Feedback</p>
+            <p class="peer-reply-text">This response confirmed that the &ldquo;dynamic dataset&rdquo; analogy resonates as both accessible and technically grounded &mdash; a bridge between organizational and machine learning language that I will continue using with non-technical stakeholders. The validation of the persistence-through-iteration framing reinforced my conviction that redefining failure as learning data is not just a mindset shift but a concrete change management tool that reduces team resistance during high-uncertainty AI deployments. The peer&rsquo;s note on ethical governance prompted me to elevate that dimension further in my Personal Framework, ultimately making it one of six SMART objectives rather than a footnote.</p>
+          </div>
+        </div>
+
+        <!-- Comment 2 -->
+        <div class="peer-comment">
+          <div class="peer-comment-header">
+            <span class="peer-avatar">P2</span>
+            <div>
+              <p class="peer-name">Peer Respondent 2</p>
+              <p class="peer-date">Workshop 2 &mdash; Discussion Forum</p>
+            </div>
+          </div>
+          <div class="peer-comment-body">
+            <p>Your perspective effectively highlights the intersection between technical iteration and organizational readiness, which is often overlooked in AI/ML leadership discussions. I especially appreciate how you frame organizational culture as a <em>"dynamic dataset,"</em> because it reinforces the idea that transformation is not static but continuously evolving.</p>
+            <p style="margin-top:12px;">Building on your point, I think one of the biggest challenges leaders face is translating complex model behavior into language that non-technical stakeholders can trust and act upon. Without this translation layer, even the most advanced models risk underutilization. Additionally, your emphasis on managing expectations between <em>"perfect"</em> and <em>"performant"</em> systems is critical, as many organizations delay deployment waiting for unrealistic levels of accuracy. In practice, iterative deployment with controlled risk often delivers more value than delayed perfection.</p>
+            <p style="margin-top:12px;">I also agree that resilience plays a central role in sustaining AI initiatives. Leaders who normalize failure as part of learning create psychological safety, which encourages experimentation. This directly impacts innovation speed. Overall, your discussion strongly connects technical rigor with human adaptability, and it reinforces that successful AI transformation depends as much on mindset and communication as it does on algorithms and infrastructure.</p>
+          </div>
+          <div class="peer-reply-block">
+            <p class="peer-reply-label">My Reflection on This Feedback</p>
+            <p class="peer-reply-text">This feedback surfaced the stakeholder translation layer as a named leadership competency &mdash; something I had practiced implicitly but had not articulated as a deliberate skill. The peer&rsquo;s framing of <em>perfect vs. performant</em> validated a principle I now apply when scoping AI/ML initiatives: iterative, value-generating deployment beats delayed perfection. Their point about psychological safety and innovation speed directly shaped how I structured my Personal Framework &mdash; moving team empowerment and servant leadership from action plan items into named core values, recognizing that culture precedes capability in any sustainable AI transformation.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="modal-footer">Artifact 2 &nbsp;&middot;&nbsp; Adaptive Learning in Action &nbsp;&middot;&nbsp; Workshop 2</div>
+    <div class="modal-footer">Artifact 2 &nbsp;&middot;&nbsp; Adaptive Learning in Action &nbsp;&middot;&nbsp; Peer Feedback Integrated &nbsp;&middot;&nbsp; Workshop 2</div>
   </div>
 </div>
 
@@ -1406,6 +1598,153 @@
 
     </div>
     <div class="modal-footer">Artifact 4 &nbsp;&middot;&nbsp; ML Data Challenges Simulation &nbsp;&middot;&nbsp; Claude AI &nbsp;&middot;&nbsp; Workshop 4</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ARTIFACT 5 MODAL ═══════════════════════════════ -->
+<div class="modal-overlay" id="artifact5Modal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <p class="modal-eyebrow">Portfolio &mdash; Workshop 5</p>
+      <h2 class="modal-title"><em>Artifact 5</em> &mdash; Personal Framework for AI/ML Leadership</h2>
+      <button class="modal-close" onclick="closeArtifact5Modal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- OVERVIEW -->
+      <div class="artifact-option" style="padding-top:0;">
+        <p class="artifact-option-num">Capstone Artifact &mdash; Workshop 5</p>
+        <p class="artifact-option-title">A Living Leadership Framework Built from Five Workshops of Growth</p>
+        <p class="artifact-option-body">This Personal Framework is the cumulative artifact of the course &mdash; a professional document that synthesizes every prior workshop, discussion, peer exchange, and self-assessment into a coherent, actionable leadership philosophy. It is grounded in the initial self-assessment (Artifact 1), tested against change management challenges (Artifact 2), sharpened by critical ML thinking (Artifact 3), hardened by data pipeline realities (Artifact 4), and now integrated into a mission-driven framework for ethical AI/ML leadership.</p>
+      </div>
+
+      <!-- WHY THIS ARTIFACT -->
+      <div class="assess-block">
+        <p class="assess-block-label">Why I Selected This as My Artifact 5</p>
+        <div class="assess-qa">
+          <p class="assess-q">What makes this the right capstone artifact?</p>
+          <p class="assess-a">Every prior artifact in this portfolio documented a distinct competency: self-awareness, adaptive learning, critical ML judgment, and data challenge navigation. This framework is the only artifact that requires all of them to work together. Writing it forced a confrontation with a harder question than any chatbot scenario had posed: not &ldquo;what do you know?&rdquo; but &ldquo;who are you as a leader, and what are you willing to be accountable for?&rdquo; The Personal Framework is also the artifact with the longest shelf life &mdash; it is designed to govern decisions ten years from now, not just pass a workshop rubric today.</p>
+        </div>
+        <div class="assess-qa">
+          <p class="assess-q">How did the peer feedback from Artifact 2 shape this framework?</p>
+          <p class="assess-a">Two direct structural changes trace directly to the peer responses received on the Workshop 2 discussion post. The first: stakeholder communication was elevated from an action plan bullet to a named, measurable objective &mdash; specifically, designing and delivering two AI literacy workshops with pre/post assessments. This change was triggered by the peer who named the translation gap between model behavior and non-technical trust as one of the biggest underaddressed leadership challenges. The second: servant leadership was promoted from a supporting behavior into a Core Value with its own scriptural and professional grounding &mdash; a change prompted by the peer who connected psychological safety directly to innovation speed and team resilience.</p>
+        </div>
+      </div>
+
+      <!-- MISSION STATEMENT -->
+      <div class="assess-block">
+        <p class="assess-block-label">Framework at a Glance</p>
+
+        <div class="framework-section">
+          <p class="framework-section-label">Mission Statement</p>
+          <p class="framework-section-body">To harness the transformative power of AI/ML to create measurable, equitable, and sustainable value for my organization, my teams, and the communities we serve &mdash; always anchored in ethical integrity, transparent communication, and a deep commitment to human dignity. I will bridge technical innovation and human-centered culture by championing AI solutions that are explainable, fair, and aligned with both strategic objectives and moral principles.</p>
+        </div>
+
+        <!-- CORE VALUES -->
+        <div class="framework-section">
+          <p class="framework-section-label">Core Values</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0; margin-bottom:14px;">
+            <span class="value-pill">Integrity &amp; Transparency</span>
+            <span class="value-pill">Justice &amp; Human Dignity</span>
+            <span class="value-pill">Servant Leadership</span>
+            <span class="value-pill">Intellectual Humility</span>
+            <span class="value-pill">Stewardship</span>
+          </div>
+          <p class="framework-section-body">Each value is grounded in three layers: a faith-based conviction (Proverbs 12:17, Micah 6:8, Matthew 20:26, Luke 12:48), a professional ethics standard (IEEE/ACM Code of Ethics), and a concrete behavioral commitment observable in daily decisions. Values are not aspirational labels &mdash; each one has a defined behavioral expression and a place in the quarterly self-assessment protocol.</p>
+        </div>
+
+        <!-- KEY OBJECTIVES -->
+        <div class="framework-section">
+          <p class="framework-section-label">Key Objectives (SMART)</p>
+          <div style="margin-bottom:10px;">
+            <span class="objective-tag">Technical</span>
+            <p class="framework-section-body" style="margin-top:6px;"><strong>O1</strong> &mdash; Complete MLOps &amp; AI Governance certification + deploy 1 production ML pipeline <em>(12 months)</em></p>
+            <p class="framework-section-body" style="margin-top:4px;"><strong>O2</strong> &mdash; Launch AI/ML fairness &amp; performance monitoring dashboard for &ge;2 active projects <em>(18 months)</em></p>
+          </div>
+          <div style="margin-bottom:10px;">
+            <span class="objective-tag">Leadership</span>
+            <p class="framework-section-body" style="margin-top:6px;"><strong>O3</strong> &mdash; Establish structured team mentorship program with measurable competency gains per mentee <em>(6 months)</em></p>
+            <p class="framework-section-body" style="margin-top:4px;"><strong>O4</strong> &mdash; Lead 2 cross-departmental AI literacy workshops; &ge;20% mean score improvement on pre/post assessments <em>(12 months)</em></p>
+          </div>
+          <div>
+            <span class="objective-tag">Ethical Governance</span>
+            <p class="framework-section-body" style="margin-top:6px;"><strong>O5</strong> &mdash; Author and present a formal Responsible AI Policy to executive leadership <em>(9 months)</em></p>
+            <p class="framework-section-body" style="margin-top:4px;"><strong>O6</strong> &mdash; Conduct semi-annual algorithmic bias audits; publish internal transparency reports; remediate all identified disparities <em>(Ongoing)</em></p>
+          </div>
+        </div>
+
+        <!-- ACTION PLANS -->
+        <div class="framework-section">
+          <p class="framework-section-label">Action Plans &mdash; Three Horizons</p>
+
+          <div class="assess-step" style="margin-bottom:14px;">
+            <span class="assess-step-num" style="min-width:28px; height:28px; font-size:10px;">0–6</span>
+            <div>
+              <p class="assess-step-title" style="font-size:0.92rem;">Foundation Building &amp; Program Launches</p>
+              <p class="assess-step-body">Inventory all active AI/ML systems; conduct individual development conversations with each direct report; enroll in MLOps certification (&ge;6 hrs/wk); launch team mentorship program; initiate first algorithmic bias audit; complete Responsible AI gap analysis against NIST AI RMF. Begin three deliberate communication behavior changes: stakeholder-adapted narrative briefings, judgment-free open-floor meeting segments, and public intellectual humility modeling in all-hands sessions.</p>
+            </div>
+          </div>
+
+          <div class="assess-step" style="margin-bottom:14px;">
+            <span class="assess-step-num" style="min-width:28px; height:28px; font-size:10px;">7–18</span>
+            <div>
+              <p class="assess-step-title" style="font-size:0.92rem;">Cross-Functional Deployment &amp; Policy Development</p>
+              <p class="assess-step-body">Deliver two AI literacy workshops using backward design and validated pre/post assessments; convene Responsible AI ethics working group across Technology, Legal, Compliance, HR, and Community Affairs; co-design policy through three facilitated workshops; deliver Responsible AI Policy to executive team by month nine; pilot AI/ML monitoring dashboard with two active projects; complete MLOps certification by month twelve.</p>
+            </div>
+          </div>
+
+          <div class="assess-step">
+            <span class="assess-step-num" style="min-width:28px; height:28px; font-size:10px;">19+</span>
+            <div>
+              <p class="assess-step-title" style="font-size:0.92rem;">Institutional Embedding &amp; Thought Leadership</p>
+              <p class="assess-step-body">Embed AI literacy and ethical reasoning into hiring criteria, performance rubrics, and succession planning. Submit one practitioner article (HBR AI or IEEE Spectrum) documenting an organizational AI/ML leadership challenge and evidence-based resolution. Identify and formally develop at least one team member capable of serving as a successor or parallel portfolio lead by month thirty.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVALUATION -->
+        <div class="framework-section">
+          <p class="framework-section-label">Evaluation &amp; Adaptation System</p>
+          <p class="framework-section-body" style="margin-bottom:10px;">Five interlocking feedback mechanisms ensure the framework remains functional rather than aspirational:</p>
+          <div class="assess-step" style="margin-bottom:10px;">
+            <span class="assess-step-num" style="min-width:26px; height:26px; font-size:10px;">Q</span>
+            <p class="assess-step-body"><strong>Quarterly self-assessment</strong> across four domains: objective progress, behavioral consistency with core values, leadership incident analysis, and learning integration &mdash; logged in a dated leadership journal.</p>
+          </div>
+          <div class="assess-step" style="margin-bottom:10px;">
+            <span class="assess-step-num" style="min-width:26px; height:26px; font-size:10px;">A</span>
+            <p class="assess-step-body"><strong>Annual 360&deg; feedback</strong> from direct reports (anonymous), cross-functional peers, senior leaders, and external mentor &mdash; covering both quantitative Likert items and qualitative open-response prompts tied to core values.</p>
+          </div>
+          <div class="assess-step" style="margin-bottom:10px;">
+            <span class="assess-step-num" style="min-width:26px; height:26px; font-size:10px;">P</span>
+            <p class="assess-step-body"><strong>Post-project after-action reviews</strong> following every major initiative, using the four-question Army AAR format: intended, actual, gap, sustain/improve.</p>
+          </div>
+          <div class="assess-step" style="margin-bottom:10px;">
+            <span class="assess-step-num" style="min-width:26px; height:26px; font-size:10px;">M</span>
+            <p class="assess-step-body"><strong>Bi-monthly mentorship sessions</strong> with an external AI/ML leader plus quarterly peer accountability cohort meetings &mdash; grounded in implementation intention research (Gollwitzer &amp; Sheeran, 2006).</p>
+          </div>
+          <div class="assess-step">
+            <span class="assess-step-num" style="min-width:26px; height:26px; font-size:10px;">R</span>
+            <p class="assess-step-body"><strong>Semi-annual framework revision protocol</strong> &mdash; all changes versioned, dated, and documented with rationale, triggered by environmental change, personal development data, or objective completion.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GROWTH REFLECTION -->
+      <div class="assess-block">
+        <p class="assess-block-label">What This Framework Represents</p>
+        <div class="assess-qa">
+          <p class="assess-q">How does this connect back to the self-assessment from Workshop 1?</p>
+          <p class="assess-a">In Workshop 1, I rated myself 3/5 in change management leadership, 2/5 in stakeholder communication, and 2/5 in ethical AI governance. Each of those three gaps now has a named objective, a detailed action plan, a measurable success criterion, and a feedback mechanism to verify whether real growth has occurred. The framework does not simply acknowledge the gaps the self-assessment surfaced &mdash; it operationalizes the closing of them.</p>
+        </div>
+        <div class="assess-qa">
+          <p class="assess-q">What is the deepest shift this course produced?</p>
+          <p class="assess-a">Entering the course, I defined AI/ML leadership primarily in technical terms: deploying accurate, efficient systems. I leave it with a fundamentally different definition: creating the organizational and ethical conditions in which responsible AI/ML innovation can sustainably flourish. Technical excellence is the prerequisite. Leadership is what happens after that prerequisite is met &mdash; and it is the harder, longer, and ultimately more consequential work.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">Artifact 5 &nbsp;&middot;&nbsp; Personal Leadership Framework &nbsp;&middot;&nbsp; Capstone &nbsp;&middot;&nbsp; Workshop 5</div>
   </div>
 </div>
 
@@ -1775,6 +2114,7 @@
     if (num === 2) openArtifact2Modal();
     if (num === 3) openArtifact3Modal();
     if (num === 4) openArtifact4Modal();
+    if (num === 5) openArtifact5Modal();
   }
 
   // ── Artifact 1 ──
@@ -1844,9 +2184,22 @@
     if (e.target === this) closeArtifact4Modal();
   });
 
+  // ── Artifact 5 ──
+  function openArtifact5Modal() {
+    document.getElementById('artifact5Modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeArtifact5Modal() {
+    document.getElementById('artifact5Modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('artifact5Modal').addEventListener('click', function(e) {
+    if (e.target === this) closeArtifact5Modal();
+  });
+
   // Escape key closes any open modal
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') { closeArtifactModal(); closeArtifact2Modal(); closeArtifact3Modal(); closeArtifact4Modal(); }
+    if (e.key === 'Escape') { closeArtifactModal(); closeArtifact2Modal(); closeArtifact3Modal(); closeArtifact4Modal(); closeArtifact5Modal(); }
   });
 
   // Close dropdown on outside click
